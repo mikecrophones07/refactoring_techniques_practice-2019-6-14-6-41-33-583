@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Vector;
 
 public class OwingPrinter {
-    void printOwing(String name, List<Order> orders) {
+    public void printOwing(String name, List<Order> orders) {
         Iterator<Order> elements = orders.iterator();
         double outstanding = 0.0;
 
@@ -24,17 +24,5 @@ public class OwingPrinter {
         // print details
         System.out.println("name: " + name);
         System.out.println("amount: " + outstanding);
-    }
-}
-
-class Order {
-    private final double amount;
-
-    public Order(double amount) {
-        this.amount = amount;
-    }
-
-    public double getAmount() {
-        return amount;
     }
 }
