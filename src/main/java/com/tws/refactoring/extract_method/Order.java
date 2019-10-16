@@ -1,13 +1,13 @@
 package com.tws.refactoring.extract_method;
 
 public class Order {
-    private final double amount;
+    private final Double amount;
 
-    public Order(double amount) {
+    public Order(Double amount) {
         this.amount = amount;
     }
 
-    public double getAmount() {
+    public Double getAmount() {
         return amount;
     }
 }

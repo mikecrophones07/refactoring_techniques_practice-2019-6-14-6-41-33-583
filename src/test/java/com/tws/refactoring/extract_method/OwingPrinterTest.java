@@ -38,11 +38,11 @@ public class OwingPrinterTest {
         String name = "Mike Echon";
         StringBuilder expectedResult = new StringBuilder();
         expectedResult
-                .append("*****************************\r\n")
-                .append("****** Customer totals ******\r\n")
-                .append("*****************************\r\n")
-                .append("name: Mike Echon\r\n")
-                .append("amount: 60\r\n");
+                .append("*****************************\n")
+                .append("****** Customer totals ******\n")
+                .append("*****************************\n")
+                .append("name: Mike Echon \n")
+                .append("amount: 60.0 \n");
 
         IntStream.rangeClosed(0, 5).forEach(value ->{
             Order order = new Order(10);
@@ -52,6 +52,6 @@ public class OwingPrinterTest {
 
         owing.printOwing(name, orderList);
         String actualResult = outContent.toString();
-        Assert.assertThat(expectedResult, is(actualResult));
+        assertEquals(expectedResult.toString(), actualResult);
     }
 }

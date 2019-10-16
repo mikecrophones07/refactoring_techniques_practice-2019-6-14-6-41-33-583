@@ -1,28 +1,26 @@
 package com.tws.refactoring.extract_method;
 
-import java.util.Enumeration;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Vector;
 
 public class OwingPrinter {
     public void printOwing(String name, List<Order> orders) {
-        Iterator<Order> elements = orders.iterator();
-        double outstanding = 0.0;
+        Double totalAmount = calculateAmount(orders);
+        calculateAmount(orders);
+        System.out.print(renderReceipt(name, totalAmount));
+    }
 
-        // print banner
-        System.out.println ("*****************************");
-        System.out.println ("****** Customer totals ******");
-        System.out.println ("*****************************");
+    private Double calculateAmount(List<Order> orders) {
+        return orders.stream().mapToDouble(Order::getAmount).sum();
+    }
 
-        // print owings
-        while (elements.hasNext()) {
-            Order each = (Order) elements.next();
-            outstanding += each.getAmount();
-        }
-
-        // print details
-        System.out.println("name: " + name);
-        System.out.println("amount: " + outstanding);
+    private String renderReceipt(String name, Double totalAmount) {
+        StringBuilder receiptText = new StringBuilder();
+        receiptText
+                .append("*****************************\n")
+                .append("****** Customer totals ******\n")
+                .append("*****************************\n")
+                .append("name: ").append(name).append(" \n")
+                .append("amount: ").append(totalAmount).append(" \n");
+        return receiptText.toString();
     }
 }
